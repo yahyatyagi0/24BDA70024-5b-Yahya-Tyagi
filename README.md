@@ -24,10 +24,20 @@ npm install
 
 ## Setup
 
-1. Set up MongoDB (local or Atlas)
-2. Update `.env` with your MONGO_URI
-3. Run `npm run dev`
-4. Open http://localhost:3001
+1. Set up MongoDB Atlas (required for deployment)
+2. Update `.env` with your Atlas connection string
+3. For local development: `npm run dev`
+4. For deployment: push to GitHub and deploy to Vercel
+
+## Deployment to Vercel
+
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) and sign up/login
+3. Click "New Project" and import your GitHub repository
+4. Add environment variable: `MONGO_URI` with your Atlas connection string
+5. Deploy!
+
+Your app will be live at `https://your-project.vercel.app`
 
 ## Features
 
