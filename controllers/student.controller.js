@@ -43,7 +43,7 @@ export const getStudentById = async (req, res) => {
     const student = await Student.findById(req.params.id).lean();
     if (!student) return res.status(404).json({ message: 'Student not found' });
     res.json(student);
-  } catch (err) {
+  } catch (_err) {
     res.status(400).json({ message: 'Invalid ID' });
   }
 };
@@ -55,12 +55,12 @@ export const updateStudent = async (req, res) => {
     const student = await Student.findByIdAndUpdate(
       req.params.id,
       { name, roll },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     ).lean();
     if (!student) return res.status(404).json({ message: 'Student not found' });
     res.json(student);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+  } catch (_err) {
+    res.status(400).json({ message: _err.message });
   }
 };
 
@@ -70,7 +70,7 @@ export const deleteStudent = async (req, res) => {
     const student = await Student.findByIdAndDelete(req.params.id).lean();
     if (!student) return res.status(404).json({ message: 'Student not found' });
     res.json({ message: 'Student deleted' });
-  } catch (err) {
+  } catch (_err) {
     res.status(400).json({ message: 'Invalid ID' });
   }
 };

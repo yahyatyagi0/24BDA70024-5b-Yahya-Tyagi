@@ -5,17 +5,25 @@ const router = express.Router();
 
 // List view
 router.get('/', async (req, res) => {
-  const students = await Student.find().sort({ roll: 1 }).lean();
-  res.render('students/index', { students });
+  try {
+    const students = await Student.find().sort({ roll: 1 }).lean();
+    res.render('students/index', { students, error: null });
+  } catch (err) {
+    res.render('students/index', { students: [], error: 'Database not connected. Please check your MongoDB setup.' });
+  }
 });
 
 // Show create form handled on index as inline form
 
 // Edit form
 router.get('/edit/:id', async (req, res) => {
-  const student = await Student.findById(req.params.id).lean();
-  if (!student) return res.redirect('/view/students');
-  res.render('students/edit', { student });
+  try {
+    const student = await Student.findById(req.params.id).lean();
+    if (!student) return res.redirect('/view/students');
+    res.render('students/edit', { student, error: null });
+  } catch (err) {
+    res.redirect('/view/students');
+  }
 });
 
 // Create via form
@@ -33,9 +41,13 @@ router.post('/', async (req, res) => {
 router.post('/edit/:id', async (req, res) => {
   try {
     const { name, roll } = req.body;
-    await Student.findByIdAndUpdate(req.params.id, { name, roll }, { runValidators: true });
+    await Student.findByIdAndUpdate(
+      req.params.id,
+      { name, roll },
+      { runValidators: true },
+    );
     res.redirect('/view/students');
-  } catch (err) {
+  } catch (_err) {
     res.redirect('/view/students');
   }
 });
@@ -45,7 +57,7 @@ router.post('/delete/:id', async (req, res) => {
   try {
     await Student.findByIdAndDelete(req.params.id);
     res.redirect('/view/students');
-  } catch (err) {
+  } catch (_err) {
     res.redirect('/view/students');
   }
 });

@@ -6,48 +6,34 @@
 
 **Student ID:** 24BDA70024  
 **Name:** Yahya Tyagi  
-**Assignment:** Student Management System  
+**Assignment:** Student Management System
 
 ## Quick Start
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - pnpm (or npm/yarn)
 - MongoDB (local or MongoDB Atlas account)
 
-### Installation
+## Installation
 
 ```bash
-# Clone the repository
-git clone <your-repo-url>
-cd student-management-system
-
-# Install dependencies
-pnpm install
-
-# Create .env file (copy from .env.example)
-cp .env.example .env
-
-# Edit .env and add your MongoDB connection string
-# For MongoDB Atlas: mongodb+srv://username:password@cluster.mongodb.net/studentdb
-# For Local MongoDB: mongodb://localhost:27017/studentdb
+npm install
 ```
 
-### Running the Application
+## Setup
 
-```bash
-# Development mode (with auto-reload)
-pnpm dev
+1. Set up MongoDB (local or Atlas)
+2. Update `.env` with your MONGO_URI
+3. Run `npm run dev`
+4. Open http://localhost:3001
 
-# Production mode
-pnpm start
-```
+## Features
 
-Open http://localhost:3000 in your browser.
-
----
-
-## Starting the Project
+- Create, Read, Update, Delete students
+- Simple web interface
+- MongoDB database
 
 Students should first follow the experiment guide to proceed with the project
 
@@ -100,6 +86,7 @@ MONGO_URI=mongodb+srv://username:password@your_cluster.mongodb.net/studentdb?ret
 **MongoDB Setup Options:**
 
 #### Option A: MongoDB Atlas (Recommended for Cloud)
+
 1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 2. Create a free account and cluster
 3. Create a database user with username and password
@@ -107,9 +94,11 @@ MONGO_URI=mongodb+srv://username:password@your_cluster.mongodb.net/studentdb?ret
 5. Replace `username`, `password`, and `cluster` in your `MONGO_URI`
 
 #### Option B: Local MongoDB
+
 ```env
 MONGO_URI=mongodb://localhost:27017/studentdb
 ```
+
 Install MongoDB locally and ensure it's running on port 27017.
 
 **⚠️ Important**: Never commit `.env` to git. The `.gitignore` file already excludes it. Use `.env.example` as a template for other developers.

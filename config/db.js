@@ -8,7 +8,9 @@ dotenv.config();
 const MONGO_URI = process.env.MONGO_URI || process.env.MONGO_URL;
 
 if (!MONGO_URI) {
-  console.error('MongoDB connection string not found in MONGO_URI or MONGO_URL environment variables.');
+  console.error(
+    'MongoDB connection string not found in MONGO_URI or MONGO_URL environment variables.',
+  );
   process.exit(1);
 }
 
@@ -21,7 +23,8 @@ const connectDB = async () => {
     console.log('MongoDB connected');
   } catch (err) {
     console.error('MongoDB connection error:', err.message);
-    process.exit(1);
+    console.log('Please check your MONGO_URI in .env file');
+    // process.exit(1); // Remove exit to prevent crash
   }
 };
 
