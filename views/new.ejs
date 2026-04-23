@@ -1,0 +1,91 @@
+<h2>➕ Add New Student</h2>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-error">
+    <strong>Error:</strong> <%= error %>
+  </div>
+<% } %>
+
+<form method="POST" action="/students" style="max-width: 600px;">
+  <div style="margin-bottom: 20px;">
+    <label for="name" style="display: block; margin-bottom: 5px; font-weight: 600;">Student Name *</label>
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      required 
+      placeholder="Enter student name"
+      style="width: 100%;"
+    >
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="email" style="display: block; margin-bottom: 5px; font-weight: 600;">Email Address *</label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      required 
+      placeholder="student@example.com"
+      style="width: 100%;"
+    >
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="rollNumber" style="display: block; margin-bottom: 5px; font-weight: 600;">Roll Number *</label>
+    <input 
+      type="text" 
+      id="rollNumber" 
+      name="rollNumber" 
+      required 
+      placeholder="e.g., 24BDA70024"
+      style="width: 100%;"
+    >
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="department" style="display: block; margin-bottom: 5px; font-weight: 600;">Department *</label>
+    <select id="department" name="department" required style="width: 100%;">
+      <option value="">Select Department</option>
+      <option value="CSE">Computer Science Engineering (CSE)</option>
+      <option value="ECE">Electronics and Communication Engineering (ECE)</option>
+      <option value="ME">Mechanical Engineering (ME)</option>
+      <option value="CE">Civil Engineering (CE)</option>
+      <option value="EE">Electrical Engineering (EE)</option>
+      <option value="BT">Biotechnology (BT)</option>
+    </select>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="semester" style="display: block; margin-bottom: 5px; font-weight: 600;">Semester *</label>
+    <select id="semester" name="semester" required style="width: 100%;">
+      <option value="">Select Semester</option>
+      <option value="1">1st Semester</option>
+      <option value="2">2nd Semester</option>
+      <option value="3">3rd Semester</option>
+      <option value="4">4th Semester</option>
+      <option value="5">5th Semester</option>
+      <option value="6">6th Semester</option>
+      <option value="7">7th Semester</option>
+      <option value="8">8th Semester</option>
+    </select>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="phoneNumber" style="display: block; margin-bottom: 5px; font-weight: 600;">Phone Number *</label>
+    <input 
+      type="tel" 
+      id="phoneNumber" 
+      name="phoneNumber" 
+      required 
+      placeholder="10-digit phone number"
+      pattern="[0-9]{10}"
+      style="width: 100%;"
+    >
+  </div>
+
+  <div style="display: flex; gap: 10px;">
+    <button type="submit">✅ Create Student</button>
+    <a href="/" style="padding: 10px 20px; background: #95a5a6; color: white; border-radius: 5px; text-decoration: none; display: inline-block;">❌ Cancel</a>
+  </div>
+</form>

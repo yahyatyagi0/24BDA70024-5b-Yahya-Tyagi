@@ -1,0 +1,93 @@
+<h2>✏️ Edit Student</h2>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-error">
+    <strong>Error:</strong> <%= error %>
+  </div>
+<% } %>
+
+<form method="POST" action="/students/<%= student._id %>?_method=PUT" style="max-width: 600px;">
+  <div style="margin-bottom: 20px;">
+    <label for="name" style="display: block; margin-bottom: 5px; font-weight: 600;">Student Name *</label>
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      required 
+      value="<%= student.name %>"
+      placeholder="Enter student name"
+      style="width: 100%;"
+    >
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="email" style="display: block; margin-bottom: 5px; font-weight: 600;">Email Address *</label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      required 
+      value="<%= student.email %>"
+      placeholder="student@example.com"
+      style="width: 100%;"
+    >
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="rollNumber" style="display: block; margin-bottom: 5px; font-weight: 600;">Roll Number *</label>
+    <input 
+      type="text" 
+      id="rollNumber" 
+      name="rollNumber" 
+      required 
+      value="<%= student.rollNumber %>"
+      placeholder="e.g., 24BDA70024"
+      style="width: 100%;"
+    >
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="department" style="display: block; margin-bottom: 5px; font-weight: 600;">Department *</label>
+    <select id="department" name="department" required style="width: 100%;">
+      <option value="CSE" <%= student.department === 'CSE' ? 'selected' : '' %>>Computer Science Engineering (CSE)</option>
+      <option value="ECE" <%= student.department === 'ECE' ? 'selected' : '' %>>Electronics and Communication Engineering (ECE)</option>
+      <option value="ME" <%= student.department === 'ME' ? 'selected' : '' %>>Mechanical Engineering (ME)</option>
+      <option value="CE" <%= student.department === 'CE' ? 'selected' : '' %>>Civil Engineering (CE)</option>
+      <option value="EE" <%= student.department === 'EE' ? 'selected' : '' %>>Electrical Engineering (EE)</option>
+      <option value="BT" <%= student.department === 'BT' ? 'selected' : '' %>>Biotechnology (BT)</option>
+    </select>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="semester" style="display: block; margin-bottom: 5px; font-weight: 600;">Semester *</label>
+    <select id="semester" name="semester" required style="width: 100%;">
+      <option value="1" <%= student.semester === 1 ? 'selected' : '' %>>1st Semester</option>
+      <option value="2" <%= student.semester === 2 ? 'selected' : '' %>>2nd Semester</option>
+      <option value="3" <%= student.semester === 3 ? 'selected' : '' %>>3rd Semester</option>
+      <option value="4" <%= student.semester === 4 ? 'selected' : '' %>>4th Semester</option>
+      <option value="5" <%= student.semester === 5 ? 'selected' : '' %>>5th Semester</option>
+      <option value="6" <%= student.semester === 6 ? 'selected' : '' %>>6th Semester</option>
+      <option value="7" <%= student.semester === 7 ? 'selected' : '' %>>7th Semester</option>
+      <option value="8" <%= student.semester === 8 ? 'selected' : '' %>>8th Semester</option>
+    </select>
+  </div>
+
+  <div style="margin-bottom: 20px;">
+    <label for="phoneNumber" style="display: block; margin-bottom: 5px; font-weight: 600;">Phone Number *</label>
+    <input 
+      type="tel" 
+      id="phoneNumber" 
+      name="phoneNumber" 
+      required 
+      value="<%= student.phoneNumber %>"
+      placeholder="10-digit phone number"
+      pattern="[0-9]{10}"
+      style="width: 100%;"
+    >
+  </div>
+
+  <div style="display: flex; gap: 10px;">
+    <button type="submit">✅ Update Student</button>
+    <a href="/" style="padding: 10px 20px; background: #95a5a6; color: white; border-radius: 5px; text-decoration: none; display: inline-block;">❌ Cancel</a>
+  </div>
+</form>
